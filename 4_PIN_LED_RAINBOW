@@ -1,0 +1,66 @@
+//set up pin location and speed of color change
+int redPin = 11;
+int greenPin = 10;
+int bluePin = 9;
+
+int speed = 100;
+
+//pins are outputs
+void setup() {
+    pinMode(redPin, OUTPUT);
+    pinMode(greenPin, OUTPUT);
+    pinMode(bluePin, OUTPUT);
+}
+
+//define setColor function
+void setColor(int red, int green,int blue){
+  analogWrite(redPin, red);
+  analogWrite(greenPin, green);
+  analogWrite(bluePin, blue);
+}
+
+void loop() {
+   /* REMINDER basic code for colors
+   digitalWrite(redPin, HIGH);
+   digitalWrite(greenPin, LOW);
+   digitalWrite(bluePin, LOW); */
+   
+   //create rbgColor array, start at light red
+   int rgbColor[3] = {244, 66, 66};
+   
+   setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+   delay(1000);
+  
+   //YELLOW (244, 244, 66)
+   for (rgbColor[1] = 66; rgbColor[1] <= 244; rgbColor[1]++){
+     setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+     delay(speed);
+   } 
+   //GREEN (0, 244, 66)
+   for (rgbColor[0] = 244; rgbColor[0] >= 0; rgbColor[0]--){
+     setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+     delay(speed);
+   } 
+   //BLUE (0, 244, 244)
+   for (rgbColor[2] = 66; rgbColor[2] >= 244; rgbColor[2]++){
+     setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+     delay(speed);
+   } 
+   //PURPLE (0, 0, 244)
+   for (rgbColor[1] = 244; rgbColor[1] <= 0; rgbColor[1]--){
+     setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+     delay(speed);
+   } 
+   //PINK (244, 0, 244)
+   for (rgbColor[0] = 0; rgbColor[0] >= 244; rgbColor[0]++){
+     setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+     delay(speed);
+   } 
+   //RED (244, 66, 66)
+   for (rgbColor[2] = 244; rgbColor[2] >= 66; rgbColor[2]--){
+     setColor(rgbColor[0], rgbColor[1], rgbColor[2]);
+     delay(speed);
+   } 
+}
+
+
